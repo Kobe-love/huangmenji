@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Take Out Food</title>
+
+    <link rel="stylesheet" href="./index.css" />
+
+    <script type="text/javascript" src="../src/items.js"></script>
+    <script type="text/javascript" src="../src/promotions.js"></script>
+    <script type="text/javascript" src="../src/best-charge.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+</head>
+<body>
+
+    <h1>在线点餐系统</h1>
+
+
+    <div class="ItemShow" id="items">
+        <h2>餐厅菜品</h2>
+        <div class="Item">
+            <label class="LabelName">名称：</label>
+            <label class="LabelStr" id="name0">     </label>
+            <label class="LabelName">价格：</label>
+            <label class="LabelStr" id="price0">     </label>
+            <label class="LabelName">数量：</label>
+            <input id="input0" type="text" value="0" width="10"/></input>
+        </div>
+        <div class="Item">
+        <label class="LabelName">名称：</label>
+        <label class="LabelStr" id="name1" width="10">     </label>
+        <label class="LabelName">价格：</label>
+        <label class="LabelStr" id="price1" width="10">     </label>
+        <label class="LabelName">数量：</label>
+        <input id="input1" type="text" value="0" width="10"/></input>
+        </div>
+        <div class="Item">
+        <label class="LabelName">名称：</label>
+        <label class="LabelStr" id="name2" width="10">     </label>
+        <label class="LabelName">价格：</label>
+        <label class="LabelStr" id="price2" width="10">     </label>
+        <label class="LabelName">数量：</label>
+        <input id="input2" type="text" value="0" width="10"/></input>
+        </div>
+        <div class="Item">
+        <label class="LabelName">名称：</label>
+        <label class="LabelStr" id="name3" width="10">     </label>
+        <label class="LabelName">价格：</label>
+        <label class="LabelStr" id="price3" width="10">     </label>
+        <label class="LabelName">数量：</label>
+        <input id="input3" type="text" value="0" width="10"/></input>
+        </div>
+    </div>
+
+
+    <div class="ItemShow" id="promotions">
+        <h2>优惠活动</h2>
+        <div class="Item">
+        <label class="LabelName">活动1：</label>
+        <label id="sale0" width="10">     </label>
+        </div>
+        <div class="Item">
+        <label class="LabelName">活动2：</label>
+        <label id="sale1" width="10">     </label>
+        </div>
+    </div>
+
+    <div class="ItemButtonShow">
+        <button onclick="calculatePrice()">结算</button>
+        <button onclick="Clear()">清除</button>
+    </div>
+
+    <div class="ItemShow">
+    <h2>账目显示</h2>
+    <pre id="message">/* 请将结算后产生的汇总字符串显示在这里 */</pre>
+    </div>
+    <script>
+        let itemInfo=loadAllItems();
+        let Promotion=loadPromotions();
+
+        for(let i in itemInfo)
+        {
+            let id='name'+i;
+            document.getElementById(id).innerHTML =itemInfo[i].name;
+            id='price'+i;
+            document.getElementById(id).innerHTML =itemInfo[i].price.toFixed(2)+' 元';
+        }
+        document.getElementById("sale0").innerHTML =Promotion[0].type;
+        document.getElementById("sale1").innerHTML =Promotion[1].type+'(黄焖鸡，凉皮)';
+    </script> </body> </html>
